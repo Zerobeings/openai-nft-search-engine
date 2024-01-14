@@ -18,6 +18,7 @@ export default function NFTSearcherPackNOSSR(){
   const [allNFTs, setAllNFTs] = useState<any[]>([]);
   const chain = useChain();
   const [network, setNetwork] = useState<string>("");
+  const [aiAnalysis, setAiAnalysis] = useState(null);
 
   // set network and feed into searcher tool
   useEffect(() => {
@@ -104,6 +105,37 @@ export default function NFTSearcherPackNOSSR(){
     setFetchedNFTs(allNFTs);
   }
 
+
+  // fetch AI analysis
+  useEffect(() => {
+    const fetchAIAnalysis = async () => {
+      if (fetchedNFTs && fetchedNFTs.length > 0) {
+        const tokenName = fetchedNFTs[1]?.metadata?.name ? fetchedNFTs[1].metadata.name : fetchedNFTs[1].name;
+        const tokenDescription = fetchedNFTs[1]?.metadata?.description ? fetchedNFTs[1].metadata.description : fetchedNFTs[1].description;
+          try {
+            const response = await fetch('/api/openai', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({tokenName, tokenDescription}),
+            });
+          
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+            setAiAnalysis(data.data);
+          } catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+          }
+      }
+    }
+    fetchAIAnalysis();
+  }, [fetchedNFTs]);
+
+
   return (
     <>
     <h1 className={styles.mainHeading}>A searchbar for 
@@ -144,6 +176,20 @@ export default function NFTSearcherPackNOSSR(){
         )}
       </div>
     </div>
+    <div className={styles.aiconsole}>
+      {aiAnalysis ? (
+          <div>
+            <h3>OpenAI generated Collection Insights</h3>
+            <p>{aiAnalysis}</p>
+          </div>
+        )
+        :  
+        <div>
+          <h3>OpenAI generated Collection Insights</h3>
+          <p>Search a collection to generate insights...</p> 
+        </div>
+      }
+      </div>
     <div className={styles.selectorContainer}>
       <Filter attributes={attributes} onAttributeSelect={handleAttributeFromCard}></Filter>
       <p className={styles.instructions}>&larr; filter by token and trait or reset trait selection &rarr;</p>
