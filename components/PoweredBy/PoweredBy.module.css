@@ -1,0 +1,40 @@
+.power {
+    position: fixed;
+    top: 3rem;  
+    left: 1rem;    
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.25rem;   
+  }
+
+  .git {
+    position: fixed;
+    top: 2.75rem; 
+    left: 4rem;    
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.25rem; 
+  }
+
+  .request {
+    position: fixed;
+    top: 1rem; 
+    left: 1rem;    
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.25rem; 
+  }
+
+  .request:hover {
+    text-decoration-line: underline;
+  }
+
+  @media (max-width: 768px) {
+    .request {
+      font-size: 0.75rem;
+      width: 250px;
+    }
+  }
