@@ -1,3 +1,16 @@
+# Template for Next.js + TypeScript + thirdweb
+
+To use this template, click on the green "Use this template" button above.
+
+```bash
+
+yarn install
+
+```
+>Note: You made need to uninstall and reinstall nft-searcher.
+
+If you would like to use nft-searcher in your project, please see the [NFTSearcher](#NFTSearcher) section below.
+
 # NFTSearcher
 
 NFTSearcher is a React component that provides a search bar for fetching and displaying NFTs from different networks. It uses the `nft-fetcher` library to fetch NFTs based on the user's search input.
@@ -8,10 +21,10 @@ NFTSearcher is a React component that provides a search bar for fetching and dis
 yarn add nft-searcher
 ```
 
-nft-searcher has two peer dependencies: `react` and `react-dom`. Make sure they are installed in your project.
+nft-searcher has three peer dependencies: react, react-dom, @thirdweb-dev/react. Make sure they are installed in your project.
 
 ```bash
-yarn add react react-dom
+yarn add react react-dom @thirdweb-dev/react
 ```
 
 ## Usage
