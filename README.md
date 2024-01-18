@@ -7,7 +7,7 @@ To use this template, click on the green "Use this template" button above.
 yarn install
 
 ```
->Note: You made need to uninstall and reinstall nft-searcher.
+>Note: You may need to uninstall and reinstall nft-searcher.
 
 If you would like to use nft-searcher in your project, please see the [NFTSearcher](#NFTSearcher) section below.
 
