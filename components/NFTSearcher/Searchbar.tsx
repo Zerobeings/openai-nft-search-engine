@@ -5,6 +5,7 @@ import NFTCard from "../NFTCard/NFTCard";
 import Filter from "../Filter/Filter";
 import Image from "next/image";
 import { useChain, ConnectWallet } from "@thirdweb-dev/react";
+import NFTInfo from "../NFTInfo/NFTInfo";
 
 interface Attributes {
   [key: string]: string[];
@@ -180,7 +181,7 @@ export default function NFTSearcherPackNOSSR(){
       {aiAnalysis ? (
           <div>
             <h3>OpenAI generated Collection Insights</h3>
-            <p>{aiAnalysis}</p>
+            <NFTInfo data={aiAnalysis} />
           </div>
         )
         :  

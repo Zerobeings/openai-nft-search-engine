@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           content: "You are a knowledgeable assistant about NFT collections and provide output in JSON format."
         }, {
           role: "user",
-          content: `Provide a summary about the NFT collection with the token named ${tokenName} which is described as: ${tokenDescription} and provide a overview of the collection`
+          content: `Provide a summary about the NFT collection with the token named ${tokenName} which is described as ${tokenDescription} and provide a overview of the collection`
         }],
       });
 
